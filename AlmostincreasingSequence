@@ -1,0 +1,41 @@
+class AlmostIncreasingSequence {
+
+    public static boolean almostIncreasingSequence(int[] sequence) {
+        int wrong = 0;
+        int i = 0;
+
+        int lowestNum = 0;
+        System.out.println(sequence.length);
+        while(i < sequence.length - 1) {
+            if(i == 0 && sequence[0] > sequence[1] && sequence.length > 3) {
+                i = 1;
+            }
+            if(sequence[i] >= sequence[i + 1]) {
+
+                wrong++;
+                if(lowestNum >= sequence[i + 1]) {
+                    sequence[i + 1] = sequence[i];
+                }
+            } else {
+                lowestNum = sequence[i];
+            }
+
+            if(wrong == 2) {
+                return false;
+            }
+            i++;
+        }
+        return true;
+    }
+
+
+    public static void main(String[] arg) {
+
+        int sequence[] = {6, 5, 4};
+        System.out.println(almostIncreasingSequence(sequence));
+
+    }
+
+
+}
+
